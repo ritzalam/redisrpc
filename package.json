@@ -1,0 +1,14 @@
+{
+  "name": "redisrcp",
+  "version": "0.0.2",
+  "private": true,
+  "scripts": {
+    "start": "coffee index.coffee"
+  },
+  "dependencies": {
+    "redis": "0.10.1",
+    "hiredis": "0.1.16",
+    "crypto-js": "3.1.2-3",
+	  "bunyan": "0.22.2"
+  }
+}
