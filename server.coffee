@@ -10,4 +10,4 @@ client.on("message", (channel, message) ->
   subClient.publish("responseChannel", message)
 )
   
-client.subscribe("echo");
+client.subscribe("bigbluebuttonAppChannel");
