@@ -30,8 +30,36 @@ calculateChecksum = (api, baseString, sharedSecret) ->
   console.log("[" + qStr + "]")
   sha1(qStr)
 
+create = (params, bbb, options, callback) ->
+  baseStr = buildBaseString(params)
 
-exports.buildBaseString = buildBaseString
-exports.calculateChecksum = calculateChecksum
+  checksum = calculateChecksum("create", baseStr, bbb.secret)
+  queryStr = baseStr + "&checksum=" + checksum
+  console.log(queryStr)
+
+  reqStr = bbb.server + "create?" + queryStr
+  console.log(reqStr)
+
+  request(reqStr, (error, response, body) ->
+    callback error, response, body 
+  ) 
+
+join = (params, bbb, options, callback) ->
+  baseStr = buildBaseString(params)
+
+  checksum = calculateChecksum("join", baseStr, bbb.secret)
+  queryStr = baseStr + "&checksum=" + checksum
+  console.log(queryStr)
+
+  reqStr = bbb.server + "join?" + queryStr
+  console.log(reqStr)
+
+  request(reqStr, (error, response, body) ->
+    callback error, response, body 
+  ) 
+
+exports.create = create
+exports.join = join
+
 
 
